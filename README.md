@@ -87,4 +87,4 @@ This portal is a mini-project based on HTML5 learning exercises designed to demo
 
 1. Clone this repo:
    ```bash
-   git clone https://github.com/Varshitha-debug/DIGITAL-NURTURE-JAVA.git
+   git clone https://github.com/Varshitha-debug/Module-1-HTML.git
