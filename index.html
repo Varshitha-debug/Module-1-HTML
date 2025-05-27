@@ -219,3 +219,73 @@
   <footer>
     <p>&copy; 2025 Local Community Council. All Rights Reserved.</p>
   </footer>
+<script>
+    function validatePhone() {
+      const phone = document.getElementById("phone").value;
+      if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Enter a valid 10-digit phone number.");
+      }
+    }
+
+    function updateFee() {
+      const eventType = document.getElementById("eventType").value;
+      const fee = { music: 100, art: 150, yoga: 200 };
+      document.getElementById("feeDisplay").textContent =
+        eventType ? `Fee: ₹${fee[eventType]}` : "";
+    }
+
+    function countChars() {
+      const len = document.getElementById("feedback").value.length;
+      document.getElementById("charCount").textContent = len;
+    }
+
+    function storePreferences() {
+      const type = document.getElementById("eventType").value;
+      localStorage.setItem("selectedEvent", type);
+    }
+
+    function clearPreferences() {
+      localStorage.removeItem("selectedEvent");
+      alert("Preferences cleared.");
+    }
+
+    function showConfirmation(event) {
+      event.preventDefault();
+      const name = document.querySelector('input[type="text"]').value;
+      document.getElementById("confirmation").textContent = `Thanks for registering, ${name}!`;
+    }
+
+    function getLocation() {
+      const output = document.getElementById("locationOutput");
+      if (!navigator.geolocation) {
+        output.textContent = "Geolocation is not supported by your browser.";
+        return;
+      }
+
+      output.textContent = "Locating…";
+
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          output.textContent = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+        },
+        () => {
+          output.textContent = "Unable to retrieve your location.";
+        }
+      );
+    }
+
+    function confirmExit() {
+      return "Are you sure you want to leave? Your data might be lost.";
+    }
+
+    // Auto load stored selection
+    window.onload = function () {
+      const saved = localStorage.getItem("selectedEvent");
+      if (saved) {
+        document.getElementById("eventType").value = saved;
+        updateFee();
+      }
+    };
+  </script>
+</body>
+</html>
