@@ -167,3 +167,55 @@
       </video>
       <p id="videoStatus"></p>
     </section>
+ <!-- Registration Form -->
+    <section id="contact">
+      <h2>Register for an Event</h2>
+      <form id="registrationForm" onsubmit="showConfirmation(event)">
+        <label>Name:
+          <input type="text" placeholder="Your Full Name" required autofocus>
+        </label>
+
+        <label>Email:
+          <input type="email" placeholder="your@email.com" required>
+        </label>
+
+        <label>Phone:
+          <input type="text" id="phone" required onblur="validatePhone()">
+        </label>
+
+        <label>Date of Participation:
+          <input type="date" required>
+        </label>
+
+        <label>Event Type:
+          <select id="eventType" onchange="updateFee()">
+            <option value="">--Select--</option>
+            <option value="music">Music Night</option>
+            <option value="art">Art Show</option>
+            <option value="yoga">Yoga Camp</option>
+          </select>
+        </label>
+        <p id="feeDisplay"></p>
+
+        <label>Your Message:
+          <textarea id="feedback" onkeyup="countChars()" placeholder="Write something..."></textarea>
+        </label>
+        <p>Characters typed: <span id="charCount">0</span></p>
+
+        <output id="confirmation"></output>
+
+        <br>
+        <button type="submit" onclick="storePreferences()">Submit</button>
+        <button type="button" onclick="clearPreferences()">Clear Preferences</button>
+      </form>
+      <br>
+      <button onclick="getLocation()">Find Nearby Events</button>
+      <p id="locationOutput"></p>
+    </section>
+
+    
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Local Community Council. All Rights Reserved.</p>
+  </footer>
